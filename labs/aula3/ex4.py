@@ -6,7 +6,7 @@ from cryptography.hazmat.backends import default_backend
 
 def read_from_file():
     f = open("key.txt", "rb")
-    #print(f.read())
+    # print(f.read())
     return f.read()
 
 
@@ -19,9 +19,11 @@ encryptor = cipher.decryptor()
 padder = padding.PKCS7(algorithms.AES.block_size).padder()
 
 # Open input file for reading and output file for writing
-input_file = open("ex3_input_file.txt", "rb")
+input_file = open("ex3_output_file.txt", "rb") # usar o ficheiro encriptado do ex anterior
+output_file = open("ex4_output_file.txt", "wb")
 
 # Write the contents of iv in the output file
+output_file.write(iv)
 print("iv: ", iv)
 
 while True:  # Cicle to repeat while there is data left on the input file
@@ -31,11 +33,14 @@ while True:  # Cicle to repeat while there is data left on the input file
     if not plaintext:
         ciphertext = encryptor.update(padder.finalize())
         # Write the contents of ciphertext in the output file
-        print("ciphertext1: ", ciphertext)
+        output_file.write(ciphertext)
+        print("writen in output file -> ", ciphertext)
         break
     else:
         ciphertext = encryptor.update(padder.update(plaintext))
         # Write the ciphertext in the output file
-        print("ciphertext: ", ciphertext)
+        output_file.write(ciphertext)
+        print("writen in output file -> ", ciphertext)
 
 input_file.close()
+output_file.close()
