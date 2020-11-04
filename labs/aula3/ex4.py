@@ -12,35 +12,25 @@ def read_from_file():
 
 # Read key bytes from key file ( into variable key )
 key = read_from_file()
-# Setup cipher : AES in CBC mode , w/ a random IV and PKCS #7 padding ( similar to PKCS #5)
-iv = os.urandom(algorithms.AES.block_size // 8)
-cipher = Cipher(algorithms.AES(key), modes.CBC(iv), default_backend())
-encryptor = cipher.decryptor()
-padder = padding.PKCS7(algorithms.AES.block_size).padder()
 
 # Open input file for reading and output file for writing
 input_file = open("ex3_output_file.txt", "rb") # usar o ficheiro encriptado do ex anterior
 output_file = open("ex4_output_file.txt", "wb")
 
-# Write the contents of iv in the output file
-output_file.write(iv)
-print("iv: ", iv)
+# TODO
+# ir buscar iv ao ficheiro (ler primeiro 16 bytes)
+iv = input_file.read(16)
+cipher = Cipher(algorithms.AES(key), modes.CBC(iv), default_backend())
+decryptor = cipher.decryptor()
+padder = padding.PKCS7(algorithms.AES.block_size).padder()
 
-while True:  # Cicle to repeat while there is data left on the input file
-    # Read a chunk of the input file to the plaintext variable
-    plaintext = input_file.read()
 
-    if not plaintext:
-        ciphertext = encryptor.update(padder.finalize())
-        # Write the contents of ciphertext in the output file
-        output_file.write(ciphertext)
-        print("writen in output file -> ", ciphertext)
-        break
-    else:
-        ciphertext = encryptor.update(padder.update(plaintext))
-        # Write the ciphertext in the output file
-        output_file.write(ciphertext)
-        print("writen in output file -> ", ciphertext)
+ciphertext = input_file.read()
+
+plaintext = decryptor.update(padder.update(ciphertext))
+
+output_file.write(plaintext)
+print("writen in output file -> ", plaintext)
 
 input_file.close()
 output_file.close()

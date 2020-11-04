@@ -5,7 +5,7 @@ from cryptography.hazmat.backends import default_backend
 
 
 def write_to_file(content):
-    f = open("key.txt", "ab")
+    f = open("key.txt", "wb")
     f.write(content)
     f.close()
 

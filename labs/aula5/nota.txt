@@ -1,0 +1,2 @@
+encriptar -> chave publica
+desencriptar -> chave privada
