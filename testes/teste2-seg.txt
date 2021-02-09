@@ -1,0 +1,44 @@
+1) Em Unix, os direitos de acesso de um processo são sempre definidos pelo programa que o executa?
+	nao, é pelo dono (owner)
+2)ARP Poisoning a partir de qql ponto da Internet?
+	nao, só rede local
+3) Uma capacidade pode ser alterada pelo seu dono?
+4) Em XACML, quem é que efetivamente controla um acesso/força um política? -PEP ou -PDP
+5) Biométricos fazem com que os users nao tenham que decorar as chaves? - Verdadeiro
+6) Os mecanismos de challenge com partilha de chaves assimétricas garantem autenticação mútua? - Falso (errei no teste)
+7) Os níveis de Integridade (Biba, I suppose) têm valores limite?
+
+1 ) Modelo de controlo, o núcleo do SO Linux é um monitor que controla o acesso ?
+2 ) Sobre encriptação de ficheiros o que é mais problemático, encriptar o nome ou permissões?
+3 ) SSH autentica servidor com assimétricas não certificadas
+4 ) Informação médica sobre uma pessoa:
+	a) Pode ser sensivel dado que poderá revelar outras informações sobre a pessoa
+	b) Inerentemente sensivel. - esta
+	
+1)o SO linux para os acessos usa 9bits? 
+	Owner: Read, write, execution
+	Group: Read, write, execution
+	Others: Read, write, execution
+	São 9
+2)a autenticação duma entidade é uma prova duma carateristica unica?
+3) o que é que não é permitido fazer no bela-padula?
+         a)write up
+         b)read up - esta (no read up e no write down)
+		 
+
+1) Veio também sobre Modelo biba 
+2) Modelo Clark wilson
+em ambas as questões basicamente perguntava a funcionalidade, já não me recordo das opções
+
+4) o PAM permite definir politicas e mecanismos de autenticação para aplicações distintas
+
+o RBAC adequa-se melhor a:
+	a) base de dados - certo
+	b) file system
+	
+ACLs podem definir rights para entidades não instanciadas?
+
+autenticação com biométrica permite que o utilizador escolha o modo.. (qql coisa do género) ?  
+
+autenticação challenge-response permite ... mutua com partilha de credenciais? - falso (errei no teste)
+
